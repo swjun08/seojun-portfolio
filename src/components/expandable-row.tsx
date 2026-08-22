@@ -1,0 +1,48 @@
+import { ImageFill } from "@/components/image-fill";
+
+export function ExpandableRow({
+  date,
+  title,
+  subtitle,
+  desc,
+  detail,
+}: {
+  date?: string;
+  title: string;
+  subtitle?: string;
+  desc?: string;
+  detail?: string;
+}) {
+  const mainBlock = (
+    <div className="flex flex-col gap-1 sm:grid sm:grid-cols-[5.5rem_1fr] sm:gap-4">
+      <span className="text-xs leading-snug text-foreground/45 sm:pt-0.5">{date}</span>
+      <div>
+        <p className="text-lg font-semibold text-foreground">{title}</p>
+        {subtitle && <p className="mt-0.5 text-sm text-foreground/60">{subtitle}</p>}
+        {desc && <p className="mt-1.5 text-sm leading-relaxed text-foreground/70">{desc}</p>}
+        {detail && (
+          <>
+            <span className="mt-1.5 inline-block text-xs font-medium text-accent group-open:hidden">더보기</span>
+            <span className="mt-1.5 hidden text-xs font-medium text-foreground/45 group-open:inline">접기</span>
+          </>
+        )}
+      </div>
+    </div>
+  );
+
+  if (!detail) {
+    return <div className="border-b border-border py-5 last:border-none">{mainBlock}</div>;
+  }
+
+  return (
+    <details className="group border-b border-border py-5 last:border-none">
+      <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">{mainBlock}</summary>
+      <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:pl-[6.5rem]">
+        <div className="relative aspect-[4/3] w-32 shrink-0 overflow-hidden rounded-lg">
+          <ImageFill src={undefined} alt={title} placeholderLabel="사진" />
+        </div>
+        <p className="text-sm leading-relaxed text-foreground/70">{detail}</p>
+      </div>
+    </details>
+  );
+}

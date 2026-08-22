@@ -13,6 +13,10 @@
 # testing
 /coverage
 
+# private planning docs (not for public repo)
+/PROFILE.md
+*.xlsx
+
 # next.js
 /.next/
 /out/
