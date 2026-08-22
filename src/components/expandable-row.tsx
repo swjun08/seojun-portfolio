@@ -1,5 +1,3 @@
-import { ImageFill } from "@/components/image-fill";
-
 export function ExpandableRow({
   date,
   title,
@@ -37,10 +35,7 @@ export function ExpandableRow({
   return (
     <details className="group border-b border-border py-5 last:border-none">
       <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">{mainBlock}</summary>
-      <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:pl-[6.5rem]">
-        <div className="relative aspect-[4/3] w-32 shrink-0 overflow-hidden rounded-lg">
-          <ImageFill src={undefined} alt={title} placeholderLabel="사진" />
-        </div>
+      <div className="mt-4 sm:pl-[6.5rem]">
         <p className="text-sm leading-relaxed text-foreground/70">{detail}</p>
       </div>
     </details>

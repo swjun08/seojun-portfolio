@@ -38,8 +38,24 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://seojunpark.vercel.app"),
   title: "박서준",
   description: "문제를 정의하고 기획하는 사람, 박서준의 포트폴리오",
+  openGraph: {
+    title: "박서준",
+    description: "문제를 정의하고 기획하는 사람, 박서준의 포트폴리오",
+    url: "https://seojunpark.vercel.app",
+    siteName: "박서준",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "박서준",
+    description: "문제를 정의하고 기획하는 사람, 박서준의 포트폴리오",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
