@@ -28,7 +28,7 @@ export function WordReveal({ text, className = "" }: { text: string; className?:
   }, [text]);
 
   return (
-    <p ref={ref} className={`text-pretty text-justify leading-relaxed ${className}`}>
+    <p ref={ref} className={`text-pretty text-left leading-loose sm:text-justify sm:leading-relaxed ${className}`}>
       {text.split(" ").flatMap((word, i, arr) => {
         const span = (
           <span key={i} data-word className="word-reveal inline-block">

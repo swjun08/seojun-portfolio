@@ -45,7 +45,6 @@ export function BlogGrid({ posts }: { posts: PostMeta[] }) {
               <p className="text-lg font-black leading-tight tracking-tight text-white sm:text-xl">
                 {post.title}
               </p>
-              <p className="mt-2 text-xs text-white/70">{post.date}</p>
             </div>
           </Link>
         ))}
