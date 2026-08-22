@@ -75,7 +75,8 @@ const FONT_FAMILIES = {
 } as const;
 type FontId = keyof typeof FONT_FAMILIES;
 
-const DEFAULT_POS = { top: 78, left: 50 };
+// bottom 기준 앵커 — 모바일에서 자막이 여러 줄로 접히면 토글 바 대신 자막이 위로 자라도록 한다.
+const DEFAULT_POS = { bottom: 13, left: 50 };
 
 // overlay.js의 buildMoveIcon()과 동일한 4방향 화살표 아이콘
 function MoveIcon() {
@@ -132,7 +133,7 @@ export function DemoPlayer() {
       const dyPct = ((ev.clientY - startY) / rect.height) * 100;
       setPos({
         left: Math.min(92, Math.max(8, startPos.left + dxPct)),
-        top: Math.min(92, Math.max(10, startPos.top + dyPct)),
+        bottom: Math.min(90, Math.max(4, startPos.bottom - dyPct)),
       });
     }
     function onUp() {
@@ -152,7 +153,7 @@ export function DemoPlayer() {
     <div>
       <div
         ref={containerRef}
-        className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border shadow-lg"
+        className="@container relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border shadow-lg"
       >
         <Image
           src="/images/project/easysub/demo-bg.jpg"
@@ -165,16 +166,16 @@ export function DemoPlayer() {
 
         {/* 자막 오버레이 — overlay.css #ieasy-caption-root/#ieasy-caption-text 재현, 드래그 가능 */}
         <div
-          className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 px-4"
-          style={{ top: `${pos.top}%`, left: `${pos.left}%` }}
+          className="absolute flex -translate-x-1/2 flex-col items-center gap-2 px-4"
+          style={{ bottom: `${pos.bottom}%`, left: `${pos.left}%` }}
         >
           <p
             key={mode.id}
-            className="caption-fade whitespace-nowrap rounded px-3.5 py-1.5 text-center leading-snug"
+            className="caption-fade demo-caption rounded px-3.5 py-1.5 text-center leading-snug"
             style={{
               backgroundColor: `rgba(${s.bg}, ${opacity})`,
               color: s.text,
-              fontSize: `${fontSize}px`,
+              fontSize: `min(${fontSize}px, 6cqw)`,
               fontFamily: FONT_FAMILIES[font].css,
             }}
           >
@@ -245,7 +246,7 @@ export function DemoPlayer() {
 
         {/* 단어 상세 패널 — overlay.css #ieasy-word-panel, word-panel.js 구조 재현 */}
         {panelWord && (
-          <div className="absolute bottom-3 right-3 flex max-h-[70%] w-[260px] flex-col overflow-hidden rounded-[10px] bg-white text-[#111] shadow-xl sm:w-[300px]">
+          <div className="absolute bottom-3 right-3 flex max-h-[70%] w-[82%] flex-col overflow-hidden rounded-[10px] bg-white text-[#111] shadow-xl sm:w-[300px]">
             <div className="flex items-center justify-between border-b border-[#eee] px-3 py-2.5 font-semibold">
               <span>&quot;{panelWord}&quot;</span>
               <button
@@ -315,7 +316,7 @@ export function DemoPlayer() {
 
         {/* 설정 패널 — 실제 익스텐션의 최신 "자막 표시 설정" UI 재현 */}
         {settingsOpen && (
-          <div className="absolute bottom-3 right-3 flex max-h-[85%] w-[280px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(14,14,17,0.92)] text-white shadow-xl backdrop-blur-xl sm:w-[310px]">
+          <div className="absolute bottom-3 right-3 flex max-h-[85%] w-[85%] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(14,14,17,0.92)] text-white shadow-xl backdrop-blur-xl sm:w-[310px]">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3.5 text-[15px] font-semibold">
               자막 표시 설정
               <button
