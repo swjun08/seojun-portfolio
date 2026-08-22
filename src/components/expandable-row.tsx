@@ -11,6 +11,9 @@ export function ExpandableRow({
   desc?: string;
   detail?: string;
 }) {
+  // ponytail: 더보기 detail text is being rewritten, hide expansion for now — revert this line to re-enable
+  detail = undefined;
+
   const mainBlock = (
     <div className="flex flex-col gap-1 sm:grid sm:grid-cols-[5.5rem_1fr] sm:gap-4">
       <span className="text-xs leading-snug text-foreground/45 sm:pt-0.5">{date}</span>
