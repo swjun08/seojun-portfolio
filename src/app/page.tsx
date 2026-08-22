@@ -22,7 +22,7 @@ export default function Home() {
         <div className="relative w-28 sm:w-32">
           <div className="absolute -inset-6 -z-10 rounded-full bg-gradient-to-br from-accent/40 via-fuchsia-500/20 to-teal-400/20 blur-2xl" />
           <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-lg ring-1 ring-border">
-            <ImageFill src="/images/profile.jpg" alt="박서준 프로필 사진" objectPosition="center 20%" />
+            <ImageFill src="/images/profile.jpg" alt="박서준 프로필 사진" objectPosition="center 20%" sizes="128px" />
           </div>
         </div>
       </Reveal>

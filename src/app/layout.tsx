@@ -6,9 +6,34 @@ import { AmbientBackground } from "@/components/ambient-background";
 import "./globals.css";
 
 const pretendard = localFont({
-  src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
+  src: [
+    {
+      path: "../../node_modules/pretendard/dist/web/static/woff2-subset/Pretendard-Regular.subset.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/pretendard/dist/web/static/woff2-subset/Pretendard-Medium.subset.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/pretendard/dist/web/static/woff2-subset/Pretendard-SemiBold.subset.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/pretendard/dist/web/static/woff2-subset/Pretendard-Bold.subset.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../node_modules/pretendard/dist/web/static/woff2-subset/Pretendard-Black.subset.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
   variable: "--font-pretendard",
-  weight: "45 920",
   display: "swap",
 });
 

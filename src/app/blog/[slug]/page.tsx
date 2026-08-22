@@ -52,7 +52,7 @@ export default async function BlogPostPage({
             <h1 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{post.title}</h1>
             <div className="mt-4 flex items-center gap-2">
               <div className="relative h-7 w-7 overflow-hidden rounded-full">
-                <ImageFill src="/images/profile.jpg" alt="박서준" objectPosition="center 20%" />
+                <ImageFill src="/images/profile.jpg" alt="박서준" objectPosition="center 20%" sizes="28px" />
               </div>
               <p className="text-sm text-muted">
                 박서준 · <span>{post.date}</span>

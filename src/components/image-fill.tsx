@@ -12,11 +12,13 @@ export function ImageFill({
   alt,
   objectPosition = "center",
   placeholderLabel,
+  sizes = "100vw",
 }: {
   src?: string;
   alt: string;
   objectPosition?: string;
   placeholderLabel?: string;
+  sizes?: string;
 }) {
   if (!src) {
     return (
@@ -32,7 +34,7 @@ export function ImageFill({
       alt={alt}
       fill
       style={{ objectFit: "cover", objectPosition }}
-      sizes="100vw"
+      sizes={sizes}
     />
   );
 }
