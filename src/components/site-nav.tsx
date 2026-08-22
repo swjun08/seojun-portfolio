@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 const NAV = [
   { href: "/", label: "홈" },
   { href: "/career", label: "경력" },
+  { href: "/project", label: "프로젝트" },
   { href: "/blog", label: "블로그" },
 ];
 
