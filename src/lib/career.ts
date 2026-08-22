@@ -161,4 +161,9 @@ export const certificates: { name: string; src?: string; orientation: "portrait"
   { name: "COS Pro Python 1급", src: "/images/certificates/cospro.jpg", orientation: "landscape" },
 ];
 
-export const stack = ["Python", "JavaScript", "React", "Figma", "데이터 분석"];
+export const stack = [
+  { name: "Python", usage: "WCRC 자율주행자동차·인공지능 모델링에서 데이터 라벨링, 전처리, 모델 학습" },
+  { name: "JavaScript · React", usage: "㈜클레버러스 인턴 — 웹사이트 반응형 UI 제작" },
+  { name: "Figma", usage: "넥스트젠코퍼레이션 인턴 — 인스타그램 카드뉴스 레이아웃 설계" },
+  { name: "Git · GitHub", usage: "이 포트폴리오 사이트 개발 및 배포" },
+];

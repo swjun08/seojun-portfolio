@@ -70,7 +70,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteNav />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-border/60 py-10 text-center text-sm text-muted">
-          <p>robinseojun0625@gmail.com · @wxst7xn</p>
+          <p>
+            <a href="mailto:robinseojun0625@gmail.com" className="hover:text-foreground">
+              robinseojun0625@gmail.com
+            </a>
+            {" · "}
+            <a
+              href="https://instagram.com/wxst7xn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground"
+            >
+              @wxst7xn
+            </a>
+          </p>
           <p className="mt-1">© {new Date().getFullYear()} 박서준</p>
         </footer>
       </body>

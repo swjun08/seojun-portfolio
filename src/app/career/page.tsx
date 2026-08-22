@@ -181,7 +181,14 @@ export default function CareerPage() {
 
       <Reveal className="mt-16">
         <SectionTitle>기술 스택</SectionTitle>
-        <p className="mt-6 text-sm text-foreground/70">{stack.join(" · ")}</p>
+        <div className="mt-6 divide-y divide-border">
+          {stack.map((s) => (
+            <div key={s.name} className="flex flex-col gap-1 py-3 sm:grid sm:grid-cols-[9rem_1fr] sm:gap-4">
+              <span className="text-sm font-semibold text-foreground">{s.name}</span>
+              <span className="text-sm text-foreground/70">{s.usage}</span>
+            </div>
+          ))}
+        </div>
       </Reveal>
     </div>
   );

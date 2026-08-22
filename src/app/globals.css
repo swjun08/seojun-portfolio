@@ -54,6 +54,20 @@ body {
   transform: translateY(0);
 }
 
+/* Scroll-reveal animations only fire once an element has actually
+   crossed the viewport. Printing or a full-page screenshot never
+   triggers that, so force everything visible in those contexts. */
+@media print {
+  [data-reveal],
+  .reveal-content > *,
+  .word-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    color: inherit !important;
+    transition: none !important;
+  }
+}
+
 .word-reveal {
   color: var(--muted);
   opacity: 0.45;
