@@ -76,6 +76,22 @@ body {
   border-radius: 9999px;
   filter: blur(150px);
   opacity: 0.1;
+  will-change: transform;
+}
+
+/* Blurred, continuously-animating layers are expensive to composite on
+   phone GPUs (Chrome/Android especially). Shrink and stop animating them
+   on small screens — the effect barely reads at that size anyway. */
+@media (max-width: 768px) {
+  .ambient-field {
+    animation: none;
+  }
+  .ambient-blob {
+    width: 60vw;
+    height: 60vw;
+    filter: blur(60px);
+    animation: none !important;
+  }
 }
 
 .ambient-blob-a {
