@@ -40,15 +40,6 @@ export function getAllPosts(): PostMeta[] {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export function getAdjacentPosts(slug: string) {
-  const posts = getAllPosts();
-  const index = posts.findIndex((p) => p.slug === slug);
-  return {
-    prev: index >= 0 && index < posts.length - 1 ? posts[index + 1] : null,
-    next: index > 0 ? posts[index - 1] : null,
-  };
-}
-
 function slugify(text: string) {
   return text
     .trim()

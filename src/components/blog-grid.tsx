@@ -41,7 +41,7 @@ export function BlogGrid({ posts }: { posts: PostMeta[] }) {
           <Link key={post.slug} href={`/blog/${post.slug}`} className="group relative block aspect-[4/5] overflow-hidden rounded-xl">
             <ImageFill src={post.cover || undefined} alt={post.title} placeholderLabel="사진" />
             <div className="absolute inset-0 bg-gradient-to-t from-black from-5% via-black/70 via-45% to-transparent to-90% transition-opacity group-hover:from-black" />
-            <div className="absolute inset-x-0 bottom-0 p-4">
+            <div className="absolute inset-x-0 bottom-10 px-4">
               <p className="text-lg font-black leading-tight tracking-tight text-white sm:text-xl">
                 {post.title}
               </p>
