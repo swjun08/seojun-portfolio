@@ -153,16 +153,20 @@ export function DemoPlayer() {
     <div>
       <div
         ref={containerRef}
-        className="@container relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border shadow-lg"
+        className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-border shadow-lg"
       >
-        <Image
-          src="/images/project/easysub/demo-bg.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          sizes="(min-width: 640px) 640px, 100vw"
-        />
-        <div className="absolute inset-0 bg-black/10" />
+        {/* 캡션 글씨 크기를 컨테이너 폭 기준(cqw)으로 맞추기 위한 컨테이너 쿼리 스코프.
+            fixed 패널들은 이 스코프 밖에 둬야 실제 뷰포트 기준으로 뜬다(container-type이
+            fixed 자손의 containing block을 바꿔버리는 것을 피하기 위함). */}
+        <div className="@container absolute inset-0">
+          <Image
+            src="/images/project/easysub/demo-bg.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(min-width: 640px) 640px, 100vw"
+          />
+          <div className="absolute inset-0 bg-black/10" />
 
         {/* 자막 오버레이 — overlay.css #ieasy-caption-root/#ieasy-caption-text 재현, 드래그 가능 */}
         <div
@@ -171,11 +175,11 @@ export function DemoPlayer() {
         >
           <p
             key={mode.id}
-            className="caption-fade demo-caption rounded px-3.5 py-1.5 text-center leading-snug"
+            className="caption-fade whitespace-nowrap rounded px-3.5 py-1.5 text-center leading-snug"
             style={{
               backgroundColor: `rgba(${s.bg}, ${opacity})`,
               color: s.text,
-              fontSize: `min(${fontSize}px, 6cqw)`,
+              fontSize: `min(${fontSize}px, 3.1cqw)`,
               fontFamily: FONT_FAMILIES[font].css,
             }}
           >
@@ -243,10 +247,22 @@ export function DemoPlayer() {
             </button>
           </div>
         </div>
+        </div>
+
+        {/* 모바일에서는 좁은 데모 박스 안이 아니라 화면 전체 기준 바텀시트로 띄운다 */}
+        {(panelWord || settingsOpen) && (
+          <div
+            className="fixed inset-0 z-[55] bg-black/50 sm:hidden"
+            onClick={() => {
+              setPanelWord(null);
+              setSettingsOpen(false);
+            }}
+          />
+        )}
 
         {/* 단어 상세 패널 — overlay.css #ieasy-word-panel, word-panel.js 구조 재현 */}
         {panelWord && (
-          <div className="absolute bottom-3 right-3 flex max-h-[70%] w-[82%] flex-col overflow-hidden rounded-[10px] bg-white text-[#111] shadow-xl sm:w-[300px]">
+          <div className="fixed inset-x-4 bottom-4 z-[60] flex max-h-[75vh] flex-col overflow-hidden rounded-2xl bg-white text-[#111] shadow-xl sm:absolute sm:inset-x-auto sm:bottom-3 sm:right-3 sm:max-h-[70%] sm:w-[300px] sm:rounded-[10px]">
             <div className="flex items-center justify-between border-b border-[#eee] px-3 py-2.5 font-semibold">
               <span>&quot;{panelWord}&quot;</span>
               <button
@@ -316,7 +332,7 @@ export function DemoPlayer() {
 
         {/* 설정 패널 — 실제 익스텐션의 최신 "자막 표시 설정" UI 재현 */}
         {settingsOpen && (
-          <div className="absolute bottom-3 right-3 flex max-h-[85%] w-[85%] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(14,14,17,0.92)] text-white shadow-xl backdrop-blur-xl sm:w-[310px]">
+          <div className="fixed inset-x-4 bottom-4 z-[60] flex max-h-[75vh] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(14,14,17,0.92)] text-white shadow-xl backdrop-blur-xl sm:absolute sm:inset-x-auto sm:bottom-3 sm:right-3 sm:max-h-[85%] sm:w-[310px]">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3.5 text-[15px] font-semibold">
               자막 표시 설정
               <button

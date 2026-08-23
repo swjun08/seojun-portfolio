@@ -40,6 +40,9 @@ export function EasysubMedia({ serviceUrl }: { serviceUrl?: string }) {
         <div className="mt-4">
           <DemoPlayer />
         </div>
+        <p className="mt-3 text-center text-xs text-foreground/40 sm:hidden">
+          이 데모는 모바일보다 컴퓨터 환경에서 더 편하게 볼 수 있어요
+        </p>
       </div>
 
       <ScrollTransformDemo title="이편한자막 변환 원리" />
